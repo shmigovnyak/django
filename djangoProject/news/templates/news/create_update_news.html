@@ -1,0 +1,22 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Новости{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'news/css/create_update_news.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="createform">
+        <form method="POST" enctype="multipart/form-data">
+              <div class="form">
+                  {% csrf_token %}
+                  {{ form.title }}<br>
+                  {{ form.content }}<br>
+                  {{ form.image }}<br>
+                  <button type="submit" class="btn buter_3" style="margin: 10px 0 2% 0"> {{ action }}</button>
+              </div>
+        </form>
+    </div>
+
+{% endblock %}

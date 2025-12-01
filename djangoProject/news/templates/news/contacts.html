@@ -1,0 +1,20 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Новости{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'news/css/news_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="list d-flex align-items-center w-100 justify-content-center">
+            <div class="d-flex gap-4 p-4 flex-column justify-content-between w-50" style="background: white">
+                     <h1 class="seymour-one-regular text-center">Контакты</h1>
+                     <h2>Номер организации: 8-800-555-35-35</h2>
+                     <h2>ФИО: Михайлова Анастасия Андреевна</h2>
+                    <h2>Пол: Женский</h2>
+                    <h2>Возраст: 20 лет</h2>
+            </div>
+            <hr>
+    </div>
+{% endblock %}

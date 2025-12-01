@@ -1,0 +1,90 @@
+.list {
+    width: 100%;
+}
+
+.news {
+    display: flex;
+    height: 10%;
+    width: 94%;
+    flex-direction: row;
+    border-radius: 10px;
+    margin: 1% 0 0 3%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 16px;
+}
+
+.news a {
+
+    text-decoration: none;
+    font-size: 40px;
+    color: #fd8ef9;
+
+}
+
+.text-outline {
+  text-shadow:
+    1px 0 #52cef5,
+    0 -1px #52cef5,
+    -1px 0 #52cef5,
+    0 1px #52cef5;
+}
+
+.content{
+        width:20%;
+        border-right: 4px solid;
+        margin-right: 3%;
+        color: #c29ffa;
+}
+.news_info {
+    color: #ffffff;
+}
+
+.news_info a {
+    font-size: 20;
+}
+
+form {
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+}
+
+.paginator .step-links {
+    display: flex;
+    gap: 0.5em;
+}
+
+.paginator a,
+.paginator span {
+    color: #b764f5;
+    text-decoration: none;
+    padding: 0.5em 0.75em;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25em;
+    background-color: #f8f9fa;
+}
+
+.paginator a:hover {
+    background-color: #e2e6ea;
+}
+
+.paginator .current {
+    font-weight: bold;
+    background-color: #b764f5;
+    color: white;
+    border: 1px solid #8540f5;
+
+}
+
+.paginator a.disabled {
+    pointer-events: none;
+    color: #607570;
+}

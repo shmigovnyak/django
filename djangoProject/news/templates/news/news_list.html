@@ -1,0 +1,69 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Новости{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'news/css/news_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if user.is_superuser %}
+    <a class="btn buter_3" href="{% url 'news:create_news'%}"
+       style="margin: 1% 0 0 2%">
+        Создать блог</a>
+    {% endif %}
+    <form method="GET" class="d-flex gap-3">
+        <input type="text" name="search" placeholder="Поиск">
+        <label for="start_date">Дата начала:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">Дата окончания:</label>
+        <input type="date" id="end_date" name="end_date">
+        <input type="submit" val
+               ue="Найти">
+    </form>
+    <div class="list">
+        {% for new in page_obj %}
+            <div class="news"
+            style="
+                    background: url({{ new.image.url }}) no-repeat;
+                    background-position: center;
+                    background-size: cover;">
+            <div class="content">
+                 <div class="seymour-one-regular"  style="height: 60%; "><a href="{{ new.get_absolute_url }}">{{new.title}}</a></div>
+            </div>
+                <div style="height: 80%" class="news_info text-outline">
+                    <a> {{ new.content | truncatechars:100 }}</a>
+                </div>
+                <div style="height: 30%; text-align: right;width: 20%; align-items: center" class="news_info">
+                    {% if user.is_superuser %}
+                        <a class="btn buter_3"
+                           href="{% url 'news:update_news' pk=new.id %}"
+                        style="margin: 1% 0 0 2%"><i class="fa fa-pen" style="color:white"></i></a>
+                    {% endif %}
+                    <a style="color: #d5a1ff; font-weight: 500; font-size: 24px">by {{ new.author }}</a>
+                </div>
+
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+
+    <div class="paginator">
+
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+
+    </div>
+{% endblock %}

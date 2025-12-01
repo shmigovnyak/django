@@ -1,0 +1,38 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section>
+        <h2>Информация о пользователе <a href="{% url 'users:profile_update' %}"><i class="fa fa-edit"></i></a></h2>
+        <a><strong>Имя пользователя: </strong>{% if user.username %} {{ user.username }}{% else %}---{% endif %}</a><br>
+        <a><strong>Электронная почта: </strong>{% if user.email %} {{ user.email }}{% else %}---{% endif %}</a><br>
+        <a><strong>Имя : </strong>{% if user.first_name %} {{ user.first_name}}{% else %}---{% endif %}</a><br>
+        <a><strong>Фамилия: </strong>{% if user.last_name %} {{ user.last_name }}{% else %}---{% endif %}</a><br>
+        <a><strong>Дата регистрации: </strong>{% if user.date_joined %} {{ user.date_joined }}{% else %}---{% endif %}</a><br>
+        {% if user.is_staff %}
+                <a><strong>Администратор: </strong>{% if user.is_staff %} Да {% else %}Нет{% endif %}</a><br>
+                <a><strong>Суперпользователь: </strong>{% if user.is_superuser %} Да {% else %}Нет{% endif %} </a><br>
+        {% endif %}
+    </section>
+
+    <section class="user-news">
+      <h2> Посты пользователя</h2>
+        {% if user_news %}
+            <div class="news">
+                {% for new in user_news %}
+                     <a href="{% url 'news:news_detail' new.id %}">{{ new.title }}</a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <a> Пользователь еще не написал ни одного поста</a><br>
+        {% endif %}
+    </section>
+
+</main>
+{% endblock %}

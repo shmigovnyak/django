@@ -1,0 +1,52 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Новости{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'news/css/news_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+   <div class="news_detail">
+        <a class="arrow btn buter" href="{% url 'news:news_detail' pk=news.id %}?post=prev">
+            <i class="fa fa-angle-left"></i> </a>
+        <div class="content">
+            <img src="{{ news.image.url }}">
+            <div class="news_text"><a>{{ news.content|linebreaks }}</a></div>
+            <div class="news_info">
+                <a>{{ news.author }}</a>
+                <a>{{ news.date_published }}</a>
+            </div>
+        </div>
+       <div class="comments">
+            {% if user.is_authenticated %}
+            <div class="com_form">
+                <h3>Ваш комментарий</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn buter_3">Отправить</button>
+                </form>
+            </div>
+            {% else %}
+            <h3> Авторизуйтесь, чтобы отставлять комментарии</h3>
+            {% endif %}
+
+           {% if comments %}
+                {% for comment in comments %}
+                    <div class="comment">
+                        <a style="font-size: 30"> <img src="{% static 'news/img/user.ico' %}"
+                           style="width: 40px; margin-right: 10px">
+                            {{ comment.author }}</a>
+                        <a>{{ comment.text }}</a>
+                        <a style="align-self: flex-end">{{ comment.date_published }}</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <a class="no_comments">Комментариев пока нет</a>
+            {% endif %}
+       </div>
+    <a class="arrow btn buter" href="{% url 'news:news_detail' pk=news.id %}?post=next">
+        <i class="fa fa-angle-right"></i> </a>
+   </div>
+{% endblock %}

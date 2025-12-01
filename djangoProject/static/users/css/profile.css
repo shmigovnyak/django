@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #dee2e6;
+}
+
+main {
+    padding: 2em;
+}
+
+section {
+    margin-bottom: 2%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow:0 0 10px #8540f5 ;
+}
+
+section h2{
+    border-bottom: 2px solid #c29ffa;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-news a:hover {
+    background-color: #52cef5;
+}
+
+.user-news a {
+    color: #8540f5;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 10px;
+}

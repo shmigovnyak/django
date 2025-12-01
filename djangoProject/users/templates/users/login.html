@@ -1,0 +1,20 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Авторизация{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'users/css/user_form.css' %}">
+{% endblock %}
+
+{% block content %}
+    <a class ="title">Войти в аккаунт</a>
+    <div class="div_form">
+        <div class="form">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class ="btn buter_2">Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

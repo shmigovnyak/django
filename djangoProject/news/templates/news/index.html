@@ -1,0 +1,31 @@
+{% extends 'news/layout.html' %}
+{% load static %}
+{% block title %}Новости{% endblock %}
+
+{% block static %}
+    <link rel="stylesheet" href="{% static 'news/css/news_list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="list">
+        {% for new in news %}
+            <div class="news"
+            style="
+                    background: url({{ new.image.url }}) no-repeat;
+                    background-position: center;
+                    background-size: cover;">
+            <div class="content">
+                 <div class="seymour-one-regular"  style="height: 60%; "><a href="{{ new.get_absolute_url }}">{{new.title}}</a></div>
+            </div>
+                <div style="height: 80%" class="news_info text-outline">
+                    <a> {{ new.content | truncatechars:100 }}</a>
+                </div>
+                <div style="height: 30%; text-align: right;width: 20%; align-items: center" class="news_info">
+                    <a style="color: #d5a1ff; font-weight: 500; font-size: 24px">by {{ new.author }}</a>
+                </div>
+
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}
