@@ -1,0 +1,61 @@
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    height: 5%;
+    display: flex;
+    background:white;
+    padding: 0 1% 0 1%;
+}
+.left_side, .right_side {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.left_side {
+    width: 40%;
+}
+.right_side {
+    width: 40%;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.middle {
+  width: 40%;
+    justify-content: center;
+}
+
+.btn, .log_out_form {
+    margin: 0 10px 0 10px;
+
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url("https://mykaleidoscope.ru/x/uploads/posts/2022-10/1666504004_31-mykaleidoscope-ru-p-rozovo-fioletovii-tsvet-oboi-33.jpg") no-repeat;
+    background-size:100% 100%;
+}
+
+.buter {
+    background-color: #c29ffa !important;
+    color: white;
+}
+
+.buter_2 {
+    background-color: #8540f5 !important;
+    color: white;
+}
+.buter_3 {
+    background-color: #fd8ef9 !important;
+    color: white;
+}
+
+.seymour-one-regular {
+  font-family: "Seymour One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
